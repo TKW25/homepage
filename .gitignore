@@ -28,5 +28,19 @@ go.work.sum
 .env
 
 # Editor/IDE
-# .idea/
-# .vscode/
+.idea/
+.vscode/
+
+# air live-reload build output
+tmp/
+
+# Node / npm (frontend tooling)
+node_modules/
+dist/
+
+# Tailwind generated CSS (if used)
+# static/css/output.css
+
+# OS
+.DS_Store
+Thumbs.db

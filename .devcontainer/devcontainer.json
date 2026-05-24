@@ -1,0 +1,48 @@
+{
+  "name": "Go + HTMX Dev",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+
+  // Forward common dev ports
+  "forwardPorts": [8080, 8443],
+  "portsAttributes": {
+    "8080": { "label": "HTTP", "onAutoForward": "notify" },
+    "8443": { "label": "HTTPS", "onAutoForward": "notify" }
+  },
+
+  // docker-compose for database and other services
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "golang.go",
+        "a-h.templ",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "go.useLanguageServer": true,
+        "go.toolsManagement.autoUpdate": false,
+        "[go]": {
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+          }
+        },
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+
+  "remoteUser": "dev",
+
+  "postCreateCommand": "bash .devcontainer/post-create.sh"
+}
