@@ -1,11 +1,7 @@
 {
   "name": "Go + HTMX Dev",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": ".."
-  },
   "workspaceFolder": "/workspace",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+  // "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
 
   // Forward common dev ports
   "forwardPorts": [8080, 8443],
@@ -15,7 +11,7 @@
   },
 
   // docker-compose for database and other services
-  "dockerComposeFile": "docker-compose.yml",
+  "dockerComposeFile": ["docker-compose.yml"],
   "service": "app",
 
   "customizations": {
@@ -26,7 +22,8 @@
         "bradlc.vscode-tailwindcss",
         "esbenp.prettier-vscode",
         "ms-azuretools.vscode-docker",
-        "eamodio.gitlens"
+        "eamodio.gitlens",
+        "Anthropic.claude-code"
       ],
       "settings": {
         "go.useLanguageServer": true,
